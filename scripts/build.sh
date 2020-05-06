@@ -10,6 +10,12 @@ export DEBFULLNAME="Harshal Sheth"
 export DEBEMAIL="hsheth2@gmail.com"
 bzr whoami "Harshal Sheth <hsheth2@gmail.com>"
 
+eval "$(ssh-agent -s)"
+chmod 600 /secrets/launchpad_id_rsa
+ssh-add /secrets/launchpad_id_rsa
+
+gpg --import /secrets/launchpad_key.asc
+
 mkdir cava
 cd cava
 
@@ -34,4 +40,13 @@ sed -i -e "s/{date}/`date +'%a, %d %b %Y %H:%M:%S +0000'`/g" debian/changelog
 sed -i -e "s/{distribution}/$DISTRIBUTION/g" debian/changelog
 cp README.md debian/README.source
 
+bzr builddeb -S
+
+cat <<EOF
+Run the following commands to finish uploading:
+
+    bzr push lp:~hsheth2/+junk/cava-package
+    dput ppa:hsheth2/ppa cava_${VERSION}-1_source.changes
+
+EOF
 bash

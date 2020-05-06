@@ -19,6 +19,7 @@ docker run \
 	--name $CONTAINER_NAME \
 	-v `pwd`/scripts:/scripts \
 	-v `pwd`/resources:/resources \
+	-v `pwd`/secrets:/secrets \
 	-v `pwd`/cava:/cava \
 	-e VERSION=$VERSION \
 	-e DISTRIBUTION=$DISTRIBUTION \

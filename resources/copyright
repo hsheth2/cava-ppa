@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: cava
+Source: https://github.com/karlstav/cava
+
+Files: *
+Copyright: 2020 Karl Stavestrand
+License: MIT
+
+Files: debian/*
+Copyright: 2020 Harshal Sheth <hsheth2@gmail.com>
+License: MIT

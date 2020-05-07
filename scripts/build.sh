@@ -1,10 +1,10 @@
 #!/bin/bash
 
 set -e
+rm -r /deploy/* || true
 
 [ ! -z $VERSION ] || exit 1
 [ ! -z $DISTRIBUTION ] || exit 1
-
 
 export DEBFULLNAME="Harshal Sheth"
 export DEBEMAIL="hsheth2@gmail.com"
@@ -41,12 +41,18 @@ sed -i -e "s/{distribution}/$DISTRIBUTION/g" debian/changelog
 cp README.md debian/README.source
 
 bzr builddeb -S
+cd ..
 
 cat <<EOF
+Run the following command in the tester.sh container:
+
+    cd cava/build-area && pbuilder-dist $DISTRIBUTION build cava_${VERSION}-1.dsc
+
 Run the following commands to finish uploading:
 
-    bzr push lp:~hsheth2/+junk/cava-package
+    (cd cava && bzr push lp:~hsheth2/+junk/cava-package)
     dput ppa:hsheth2/ppa cava_${VERSION}-1_source.changes
 
 EOF
-bash
+
+bash  # interactive

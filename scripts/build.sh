@@ -44,7 +44,7 @@ bzr builddeb -S
 cd ..
 
 cat <<EOF
-Run the following command in the tester.sh container:
+[optional] Run the following command in the tester.sh container:
 
     cd cava/build-area && pbuilder-dist $DISTRIBUTION build cava_${VERSION}-1.dsc
 

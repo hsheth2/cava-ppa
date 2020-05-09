@@ -19,9 +19,10 @@ sudo apt-get install cava
 
 1. Update the cava submodule to contain the latest code.
 2. Remove the stuff related to `CONFIGDIR` from the `autogen.sh` file in cava.
-3. Execute `./ppa.sh` to build the package. This will eventually drop into an
+3. Update the version number in `env.sh`.
+4. Execute `./ppa.sh` to build the package. This will eventually drop into an
    interactive shell. Follow the commands printed out at the end.
-4. To test that it builds successfully, execute `./tester.sh` and run the
+5. To test that it builds successfully, execute `./tester.sh` and run the
    commands printed by the `ppa.sh` script.
    
 ## Notes

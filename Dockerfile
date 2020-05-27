@@ -2,6 +2,9 @@ ARG DISTRIBUTION
 ARG IMAGE=ubuntu:${DISTRIBUTION}
 FROM ${IMAGE}
 
+# Prevent interaction from tzdata. From https://askubuntu.com/a/1013396.
+ENV DEBIAN_FRONTEND=noninteractive
+
 # .deb build requirements
 RUN apt-get update && apt-get install -y \
 	sudo \

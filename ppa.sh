@@ -25,6 +25,7 @@ docker run \
 	-v `pwd`/cava:/cava:ro \
 	-v $DEPLOY_VOLUME:/deploy \
 	-e VERSION=$VERSION \
+	-e DEBIAN_REVISION=$DEBIAN_REVISION \
 	-e DISTRIBUTION=$DISTRIBUTION \
 	$IMAGE_NAME:$DISTRIBUTION \
 	/scripts/build.sh

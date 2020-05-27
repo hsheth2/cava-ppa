@@ -4,13 +4,13 @@ set -e
 rm -rf /deploy/* || true
 
 [ ! -z $VERSION ] || exit 1
+[ ! -z $DEBIAN_REVISION ] || exit 1
 [ ! -z $DISTRIBUTION ] || exit 1
 
-export DEBIAN_VERSION=${VERSION}-1
+export DEBIAN_VERSION=${VERSION}-${DEBIAN_REVISION}
 
 export DEBFULLNAME="Harshal Sheth"
 export DEBEMAIL="hsheth2@gmail.com"
-export DEBSIGN_KEYID="23423424234"
 
 eval "$(ssh-agent -s)"
 chmod 600 /secrets/launchpad_id_rsa

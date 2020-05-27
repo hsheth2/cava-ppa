@@ -18,13 +18,12 @@ sudo apt-get install cava
 ## Building a new version
 
 1. Update the cava submodule to contain the latest code.
-2. Remove the stuff related to `CONFIGDIR` from the `autogen.sh` file in cava.
-3. Update the version number in `env.sh`.
-4. Execute `./ppa.sh` to build the package. This will eventually drop into an
-   interactive shell. Follow the commands printed out at the end.
-5. After running the final command (`dput`), wait for the build to succeed on
-   launchpad. Once it succeeds, copy the build to other release series (e.g.
-   eoan, focal).
+2. Update the version number in `env.sh`.
+3. Execute `./ppa.sh bionic` to build the package.
+4. When the build finishes it will drop into an interactive shell. Run the
+   `dput` command to upload the package to Launchpad.
+5. Once the build finishes on Launchpad, copy the build to other release
+   series (e.g. eoan, focal).
 
 ## Notes
 - The build process is split between a docker container and a build script. The `ppa.sh` script manages both of them.

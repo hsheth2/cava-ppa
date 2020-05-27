@@ -8,7 +8,6 @@ rm -rf /deploy/* || true
 [ ! -z $DISTRIBUTION ] || exit 1
 
 export DEBIAN_VERSION=${VERSION}-${DEBIAN_REVISION}
-
 export DEBFULLNAME="Harshal Sheth"
 export DEBEMAIL="hsheth2@gmail.com"
 
@@ -35,6 +34,7 @@ cp /resources/rules debian/
 cp /resources/cava-docs.docs debian/
 cp /resources/compat debian/
 cp -r /resources/source debian/
+cp -r /resources/patches debian/
 sed -i -e "s/{version}/$DEBIAN_VERSION/g" debian/changelog
 sed -i -e "s/{date}/`date +'%a, %d %b %Y %H:%M:%S +0000'`/g" debian/changelog
 sed -i -e "s/{distribution}/$DISTRIBUTION/g" debian/changelog

@@ -5,21 +5,22 @@ set -e
 
 source ./env.sh
 
-IMAGE_NAME=hsheth2/cava-ppa-builder
-CONTAINER_NAME=cava-ppa-builder
-DEPLOY_VOLUME=cava_deploy
+# The distro we want to build a package for.
+DISTRIBUTION=$1
 
-docker build --build-arg DISTRIBUTION=$DISTRIBUTION -t $IMAGE_NAME:$DISTRIBUTION .
+IMAGE_NAME=hsheth2/cava-ppa-builder:$DISTRIBUTION
+echo "Creating builder image called $IMAGE_NAME"
+docker image pull ubuntu:$DISTRIBUTION
+docker build --build-arg DISTRIBUTION=$DISTRIBUTION -t $IMAGE_NAME .
 
+DEPLOY_VOLUME=cava_deploy_$DISTRIBTION
+echo "Creating deploy volume called $DEPLOY_VOLUME"
 docker volume create --name $DEPLOY_VOLUME || true
 
 # Keep container running https://stackoverflow.com/a/36872226
-docker rm $CONTAINER_NAME 2>/dev/null || true
 docker run \
 	--rm \
 	-it \
-	--privileged \
-	--name $CONTAINER_NAME \
 	-v `pwd`/scripts:/scripts \
 	-v `pwd`/resources:/resources \
 	-v `pwd`/secrets:/secrets \
@@ -28,6 +29,6 @@ docker run \
 	-e VERSION=$VERSION \
 	-e DEBIAN_REVISION=$DEBIAN_REVISION \
 	-e DISTRIBUTION=$DISTRIBUTION \
-	$IMAGE_NAME:$DISTRIBUTION \
+	$IMAGE_NAME \
 	/scripts/build.sh
 

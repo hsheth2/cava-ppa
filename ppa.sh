@@ -7,6 +7,7 @@ source ./env.sh
 
 IMAGE_NAME=hsheth2/cava-ppa-builder
 CONTAINER_NAME=cava-ppa-builder
+DEPLOY_VOLUME=cava_deploy
 
 docker build --build-arg DISTRIBUTION=$DISTRIBUTION -t $IMAGE_NAME:$DISTRIBUTION .
 

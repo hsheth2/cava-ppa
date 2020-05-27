@@ -5,8 +5,5 @@
 VERSION=0.7.0-3
 DEBIAN_REVISION=1  # this may not contain a dash
 
-# First supported series.
+# The distro we want to build a package for.
 DISTRIBUTION=bionic
-
-DEPLOY_VOLUME=cava_deploy
-

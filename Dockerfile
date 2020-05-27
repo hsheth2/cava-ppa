@@ -1,11 +1,19 @@
-FROM ubuntu:xenial
+ARG DISTRIBUTION
+ARG IMAGE=ubuntu:${DISTRIBUTION}
+FROM ${IMAGE}
 
+# .deb build requirements
 RUN apt-get update && apt-get install -y \
 	sudo \
-	dh-make bzr-builddeb \
-	gnupg ubuntu-dev-tools apt-file \
-	pbuilder debootstrap devscripts \
-	expect
+	build-essential \
+	dh-make \
+	devscripts \
+	gnupg \
+	openssh-client
+
+# cava requirements
+RUN apt-get update && apt-get install -y \
+	libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake libiniparser-dev
 
 RUN useradd -ms /bin/bash build && \
 	sudo adduser build sudo && \

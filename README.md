@@ -24,7 +24,10 @@ sudo apt-get install cava
    interactive shell. Follow the commands printed out at the end.
 5. To test that it builds successfully, execute `./tester.sh` and run the
    commands printed by the `ppa.sh` script.
-   
+6. After running the final command (`dput`), wait for the build to succeed on
+   launchpad. Once it succeeds, copy the build to other release series (e.g.
+   eoan, focal).
+
 ## Notes
 - The `bzr dh-make` didn't work for me on Ubuntu 18 or 20 -- that's why the `ppa.sh` script is based on xenial.
 - `pbuilder-dist` requires `--privileged` when run within Docker because of this bug: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=930684.

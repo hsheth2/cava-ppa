@@ -1,4 +1,4 @@
-cava ({version}-1) {distribution}; urgency=medium
+cava ({version}) {distribution}; urgency=medium
 
   * Cava version {version}
 

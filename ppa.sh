@@ -4,7 +4,7 @@
 set -e
 
 # Version of the cava submodule, plug an extra tag.
-VERSION=0.7.3
+VERSION=0.7.5
 DEBIAN_REVISION=1  # this may not contain a dash
 
 # The distro we want to build a package for.

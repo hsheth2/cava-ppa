@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 
 # cava requirements
 RUN apt-get update && apt-get install -y \
-	libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake libiniparser-dev
+	libfftw3-dev libasound2-dev libncursesw5-dev libpulse-dev libtool automake libiniparser-dev xxd
 
 RUN useradd -ms /bin/bash build && \
 	sudo adduser build sudo && \

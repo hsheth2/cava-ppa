@@ -1,5 +1,10 @@
 # cava-ppa
 
+> [!IMPORTANT]  
+> Starting with **Ubuntu 20.10 / Debian 12 Bookworm**, `cava` is part of the default package repositories.
+> Install with `sudo apt install cava`.
+> As such, this package is only relevant for older Ubuntu/Debian versions and is no longer actively maintained.
+
 [CAVA](https://github.com/karlstav/cava) is an audio visualization tool.
 This repo contains scripts to build and push cava to my PPA: https://launchpad.net/~hsheth2/+archive/ubuntu/ppa.
 
